@@ -1,3 +1,11 @@
+# 🏆 Kaggle Competitions – Personal Practice & Projects
+
+This repository contains my personal solutions and learnings from various Kaggle competitions. I’m using these challenges to apply machine learning techniques, improve my model-building skills, and explore real-world datasets.
+
+---
+
+## 📂 Repository Structure
+
 
 ---
 
