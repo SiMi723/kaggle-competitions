@@ -37,5 +37,5 @@ This repository contains my personal solutions and learnings from various Kaggle
 
 ---
 
-👩‍💻 *Maintained by Simi – 2nd Year B.Tech Biotechnology, MNNIT*  
+👩‍💻 *Maintained by Simi – 2nd Year B.Tech, MNNIT*  
 📫 [LinkedIn](https://in.linkedin.com/in/simi-7636922b9) | [GitHub](https://github.com/SiMi723)  
