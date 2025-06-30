@@ -1,73 +1,51 @@
-igsaw Toxic Comment Classification Challenge 🤔🔒
+# 🧪 Jigsaw Toxic Comment Classification
 
-This project is based on Kaggle's "Toxic Comment Classification Challenge," where the task is to identify and classify different types of toxicity in online comments.
+This project is based on the Jigsaw Toxic Comment Classification Challenge. The goal is to build a multi-label classifier that identifies toxic behavior in online comments.
 
-🎡 Objective
+---
 
-To build a multi-label classifier that can identify toxic comments belonging to the following categories:
+## 📌 What I Did
 
-Toxic
+- Explored and visualized class imbalance in toxic labels
+- Preprocessed the text (lowercasing, punctuation removal, tokenization)
+- Used an Embedding + Bidirectional GRU-based RNN model for multi-label classification
+- Trained and validated the model using F1-score as metric
+- Prepared submission and tested on Kaggle
 
-Severe Toxic
+---
 
-Obscene
+## 🧠 Model Highlights
 
-Threat
+- Tokenizer + padded sequences
+- Embedding layer using pre-trained GloVe vectors
+- BiGRU layers with dropout
+- Sigmoid activation for multilabel outputs
 
-Insult
+---
 
-Identity Hate
+## 📊 Evaluation
 
-💡 What I Did
+| Method | Public Score | Private Score |
+|--------|--------------|---------------|
+| Deep Learning (RNN + GRU) | **0.94183** | **0.94440** |
 
-Explored and preprocessed text data
+---
 
-Applied basic NLP cleaning (lowercasing, punctuation removal, stopword filtering)
+## 📂 Structure
+jigsaw-toxic-comment-classification/
+├── jigsaw_nlp_rnn_live.ipynb
+└── README.md
 
-Tokenized text and padded sequences for model input
+---
 
-Built a Recurrent Neural Network (RNN) using Keras
+## ✅ What I Learned
 
-Used sigmoid activation for multi-label classification
+- How to build multi-label text classifiers
+- How to use pre-trained embeddings for better results
+- The importance of handling class imbalance in toxic comment datasets
+- How to optimize a Kaggle submission
 
-📊 Results
+---
 
-Notebook
+📚 *Project by Simi — 2nd Year B.Tech, MNNIT*
 
-Method
-
-Public Score
-
-jigsaw_nlp_rnn_cleaned.ipynb
-
-RNN (GRU)
-
-~0.9828 (F1)
-
-Note: This was a learning-focused implementation. Still exploring advanced techniques like attention and BERT.
-
-📁 Files
-
-jigsaw_nlp_rnn_cleaned.ipynb – Core notebook with preprocessing, model building, and predictions
-
-📖 Dataset
-
-Jigsaw Toxic Comment Classification Challenge
-
-✨ Learnings
-
-Multi-label classification with RNNs
-
-Better understanding of sigmoid vs softmax
-
-Dataset imbalance handling strategies
-
-💪 Next Steps
-
-Add validation strategies (StratifiedKFold, F1 optimization)
-
-Try Bidirectional GRU + GloVe embeddings
-
-Explore Transformer-based models like BERT
-
-Project by Simi – Feel free to connect or suggest improvements!
