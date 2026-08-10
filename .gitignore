@@ -1,0 +1,15 @@
+# Datasets
+data/
+
+# Pretrained embeddings
+embeddings/
+
+# Trained model files
+models/
+
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
