@@ -34,6 +34,10 @@ Bidirectional LSTM
 Bidirectional GRU
       ↓
 Evaluation & Model Comparison
+      ↓
+FastAPI Inference API
+      ↓
+Docker Containerization
 ````
 
 ## Experiments
@@ -180,26 +184,164 @@ The project evaluates models using:
 
 The deep-learning experiments also examine different sigmoid decision thresholds to study the precision-recall trade-off.
 
+## Inference API
+
+The trained BiLSTM model was integrated into a standalone inference pipeline and exposed through a FastAPI REST API.
+
+The API accepts a question and returns the predicted class and label.
+
+### API Architecture
+
+```text
+Client
+   |
+   | POST /predict
+   v
+FastAPI
+   |
+   v
+Inference Pipeline
+   |
+   +--> Tokenizer
+   |
+   +--> BiLSTM Model
+   |
+   v
+Prediction
+```
+
+### API Endpoint
+
+```text
+POST /predict
+```
+
+Example request:
+
+```json
+{
+  "question": "Why do people believe conspiracy theories?"
+}
+```
+
+Example response:
+
+```json
+{
+  "prediction": 0,
+  "label": "Sincere"
+}
+```
+
+The API was tested successfully with the trained BiLSTM model.
+
+## Docker Deployment
+
+The BiLSTM inference service was containerized using Docker.
+
+The Docker image contains:
+
+* FastAPI application
+* Uvicorn server
+* TensorFlow runtime
+* Inference pipeline
+* Trained model artifacts required for inference
+
+### Build Docker Image
+
+From the project root:
+
+```bash
+docker build -t quora-classifier .
+```
+
+### Run Docker Container
+
+```bash
+docker run --name quora-api -p 8000:8000 quora-classifier
+```
+
+The API is then available locally at:
+
+```text
+http://localhost:8000
+```
+
+### Interactive API Documentation
+
+FastAPI provides interactive Swagger documentation at:
+
+```text
+http://localhost:8000/docs
+```
+
+The `/predict` endpoint was tested successfully from the running Docker container.
+
+### Deployment Flow
+
+```text
+Trained BiLSTM Model
+        ↓
+inference.py
+        ↓
+FastAPI
+        ↓
+Dockerfile
+        ↓
+Docker Image
+        ↓
+Docker Container
+        ↓
+localhost:8000
+        ↓
+POST /predict
+        ↓
+Prediction
+```
+
+### Deployment Status
+
+* [x] FastAPI inference API
+* [x] Dockerfile created
+* [x] Docker image built successfully
+* [x] Docker container started successfully
+* [x] `/docs` endpoint tested
+* [x] `/predict` endpoint tested successfully
+* [ ] Cloud deployment
+* [ ] Kubernetes deployment
+
 ## Project Structure
 
 ```text
 quora-insincere-question-classification/
 │
+├── app/
+│   └── main.py
+│
 ├── data/
+│   └── train.csv                  # not committed
+│
 ├── embeddings/
-│   └── glove.6B.100d.txt        # not committed
+│   └── glove.6B.100d.txt          # not committed
+│
 ├── models/
 │   ├── bilstm_best.keras
 │   └── gru_best.keras
+│
 ├── notebooks/
 │   ├── 01_bow_baseline.ipynb
 │   ├── 02_tfidf_pytorch.ipynb
 │   └── 03_glove_bilstm_gru.ipynb
-├── results/
-├── src/
+│
+├── inference.py
+├── Dockerfile
+├── .dockerignore
 ├── requirements.txt
+├── requirements-docker.txt
 └── README.md
 ```
+
+Large datasets and pretrained GloVe files are intentionally excluded from version control.
 
 ## Key Learning Outcomes
 
@@ -217,6 +359,10 @@ quora-insincere-question-classification/
 * Precision-recall trade-offs
 * Threshold selection
 * Confusion-matrix-based error analysis
+* FastAPI-based ML inference
+* REST API development
+* Docker containerization
+* Local container deployment
 * Kaggle submission workflows
 
 ## Kaggle
@@ -233,9 +379,19 @@ The repository contains the notebooks and project code used for the experiments.
 
 The deep-learning metrics documented above correspond to the 100,000-question development experiment and should not be interpreted as full-dataset training results.
 
+For the Dockerized inference API, the required runtime dependencies are listed separately in `requirements-docker.txt`.
+
+## Future Work
+
+* Cloud deployment of the FastAPI inference service
+* Kubernetes-based model serving
+* Multi-model inference using BiLSTM, BiGRU and TF-IDF-based models
+* Independent scaling of model-serving components
+* Further model and threshold optimization
+
 ---
 
 **Project by Simi — MNNIT Allahabad**
 
-```
-```
+````
+

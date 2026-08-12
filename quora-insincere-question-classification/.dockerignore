@@ -1,0 +1,15 @@
+.git
+.github
+.ipynb_checkpoints
+
+data
+embeddings
+notebooks
+
+__pycache__
+*.pyc
+
+venv
+.env
+
+results
