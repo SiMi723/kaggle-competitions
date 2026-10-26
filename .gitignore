@@ -13,3 +13,50 @@ __pycache__/
 
 # Jupyter
 .ipynb_checkpoints/
+
+# =========================
+# Kaggle / raw datasets
+# =========================
+data/
+*.csv
+*.tsv
+*.zip
+
+# =========================
+# GloVe / downloaded embeddings
+# =========================
+embeddings/
+
+
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+
+# =========================
+# Jupyter
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# OS / IDE
+# =========================
+.DS_Store
+Thumbs.db
+.vscode/
+
+# =========================
+# Logs / temporary files
+# =========================
+*.log
+*.tmp
+
+# =========================
+# Local deployment artifacts
+# =========================
+docker_build.log
